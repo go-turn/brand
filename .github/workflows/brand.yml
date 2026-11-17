@@ -1,0 +1,15 @@
+name: brand
+
+# pull_request + push to main, never `on: [push, pull_request]`: both fire for a
+# branch with an open pull request, so every push would run twice.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  complete:
+    uses: go-fleettools/fleettools/.github/workflows/brand-complete.yml@main
